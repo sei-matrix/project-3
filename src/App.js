@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Cuisine from './components/cuisine/Cuisine'
-import {BrowserRouter as Router,Route} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import axios from 'axios'
 import './App.css';
 
@@ -13,26 +14,29 @@ class App extends Component {
 
   componentDidMount(){
     let cuisine = ""
-    let url = `https://api.spoonacular.com/recipes/search?apiKey=01773742fd534e77967f3c3e59b214e6&cuisine=${cuisine}&offset=0&number=1`
+    let cuisineInfoCpy = this.state.cuisineInfo
     this.state.cuisineName.forEach(c=>{
       cuisine = c
+      let url = `https://api.spoonacular.com/recipes/search?apiKey=01773742fd534e77967f3c3e59b214e6&cuisine=${cuisine}&offset=0&number=1`
       axios.get(url).then(obj =>{
-      let cuisineInfoCpy = this.state.cuisineInfo
-      cuisineInfoCpy.push(obj.data.results[0])
+      cuisineInfoCpy.push(<Cuisine  name={cuisine}  />)
       }
       )
     })
+    this.setState({cuisineInfo: cuisineInfoCpy})
+      console.log(this.state.cuisineInfo)
   }
 
   render(){
     return (
       <div className="App">
-        <Router>
-        {/* <Route path="/" Component={} /> */}
-        <Route path="/" exact render={()=>{this.state.cuisineInfo.forEach((c,index)=>{
-          return (<Cuisine  name={this.state.cuisineName[index]} id={c.id} />)
-        })}} />
-        </Router>
+        {/* <Router>
+        {/* <Route path="/" Component={} /> }
+        <Route path="/" render={()=>this.state.cuisineInfo} />
+
+        </Router> */}
+        {this.state.cuisineInfo}
+        <Cuisine  name={this.state.cuisineName[0]} id="613283" />
       </div>
     )
   }
