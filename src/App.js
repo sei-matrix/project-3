@@ -3,6 +3,8 @@ import Cuisine from './components/cuisine/Cuisine'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {Route} from 'react-router-dom'
 import axios from 'axios'
+import Recipe from './components/recipe/Recipe'
+import Details from './components/details/Details'
 import './App.css';
 
 class App extends Component {
@@ -30,13 +32,12 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        {/* <Router>
-        {/* <Route path="/" Component={} /> }
-        <Route path="/" render={()=>this.state.cuisineInfo} />
+        <Router>
+        { <Route path="/" /> }
+        <Route path="/" exact render={()=>this.state.cuisineInfo} />
 
-        </Router> */}
+        </Router>
         {this.state.cuisineInfo}
-        <Cuisine  name={this.state.cuisineName[0]} id="613283" />
       </div>
     )
   }
