@@ -9,11 +9,8 @@ class Cuisine extends Component {
             <div>
                 <div className='cuisine'>
                  <h1> {this.props.name}</h1>
-                 <h1>hhhh</h1>
-                
                  <img src={`https://spoonacular.com/recipeImages/${this.props.id}-636x393.jpg`} />
                 
-
                 </div>
             </div>
          );
