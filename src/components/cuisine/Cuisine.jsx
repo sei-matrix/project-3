@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 
 class Cuisine extends Component {
-    state = {  }
+    state = { 
+
+     }
     render() { 
         return ( 
             <div>
-                <div className='csin'>
+                <div className='cuisine'>
                  <h1> {this.props.name}</h1>
+                 <h1>hhhh</h1>
                 
-                 <img src='https://spoonacular.com/recipeImages/${this.props.img.id}-636x393.jpg' />
+                 <img src={`https://spoonacular.com/recipeImages/${this.props.id}-636x393.jpg`} />
+                
 
                 </div>
             </div>
