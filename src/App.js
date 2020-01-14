@@ -12,20 +12,20 @@ class App extends Component {
   state = {
     cuisineName: [
       "Japanese",
-      "Maxican",
+      "Mexican",
       "Thai",
       "French",
       "Italian",
       "Chinese"
     ],
-    offsets:[5,0,0,5,0,5],
-    cuisineInfo: [],
+    offsets: [5, 0, 0, 5, 0, 5],
+    cuisineInfo: []
   };
 
   componentDidMount() {
     let cuisine = "";
     let cuisineInfoCpy = [...this.state.cuisineInfo];
-    this.state.cuisineName.forEach((c,index) => {
+    this.state.cuisineName.forEach((c, index) => {
       cuisine = c;
       let url = `https://api.spoonacular.com/recipes/search?apiKey=01773742fd534e77967f3c3e59b214e6&cuisine=${cuisine}&offset=${this.state.offsets[index]}&number=1`;
       axios
@@ -33,11 +33,7 @@ class App extends Component {
         .then(obj => {
           cuisine = c;
           cuisineInfoCpy.push(
-            <Cuisine
-              key={index}
-              name={cuisine}
-              id={obj.data.results[0].id}
-            />
+            <Cuisine key={index} name={cuisine} id={obj.data.results[0].id} />
           );
         })
         .then(() => {
@@ -55,6 +51,7 @@ class App extends Component {
         <Route path="/" component={Header} />
         <Route path="/" exact render={() => this.state.cuisineInfo} />
         <Route path="/cuisines/:id" exact component={Recipes} />
+        <Route path="/recipe/:id" exact component={Details} />
       </div>
     );
   }
