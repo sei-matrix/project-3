@@ -10,7 +10,7 @@ class Header extends Component {
 <div class="hero-section">
  <div class="hero-section-text">
    <h1>flavor</h1>
-   <h5>sa header test </h5>
+   <h5> </h5>
    
  </div>
 </div>
