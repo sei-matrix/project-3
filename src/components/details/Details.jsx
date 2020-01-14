@@ -9,6 +9,19 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import CardDeck from "react-bootstrap/CardDeck";
 
+const Nexmo = require('nexmo');
+
+const nexmo = new Nexmo({
+  apiKey: '026ac304',
+  apiSecret: 'ZwfvSATYPhlLtlZ1',
+});
+
+const from = 'Nexmo';
+const to = '966506030008';
+const text = 'Hello from Nexmo';
+
+//nexmo.message.sendSms(from, to, text);
+
 class Details extends Component {
   render() {
     return (

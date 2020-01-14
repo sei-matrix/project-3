@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -9,11 +8,12 @@ import ListGroup from "react-bootstrap/ListGroup";
 import ListGroupItem from "react-bootstrap/ListGroupItem";
 import CardDeck from "react-bootstrap/CardDeck";
 
+
 class Recipe extends Component {
   render() {
     return (
       <div>
-        <h2>Title: {this.props.name}</h2>
+        {/* <h2>Title: {this.props.recipe.title}</h2> */}
 
         <img src="https://spoonacular.com/recipeImages/613283-636x393.jpg"></img>
         <br />
