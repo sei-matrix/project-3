@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Cuisine from "./components/cuisine/Cuisine";
 import { Route } from "react-router-dom";
 import axios from "axios";
-import Recipe from "./components/recipe/Recipe";
+import Recipes from "./components/recipes/Recipes";
 import Details from "./components/details/Details";
 import "./App.css";
 
@@ -18,24 +18,7 @@ class App extends Component {
     ],
     offsets:[5,0,0,5,0,5],
     cuisineInfo: [],
-    recipes: []
   };
-
-  onCuisinechoice(name){
-
-    let recipesCpy = this.state.recipes
-    let url = `https://api.spoonacular.com/recipes/search?apiKey=01773742fd534e77967f3c3e59b214e6&cuisine=${name}&offset=${Math.floor(Math.random()*50)}&number=10`;
-    axios.get(url).then(res=>{
-      res.data.results.forEach(recipe=>{
-        recipesCpy.push(<Recipe recipe={recipe} />)
-      })
-   })
-          .then(()=>{
-            this.setState({recipes: recipesCpy})
-          })
-
-          return (this.state.recipes)
-  }
 
   componentDidMount() {
     let cuisine = "";
@@ -67,7 +50,8 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" exact render={() => this.state.cuisineInfo} />
-        <Route path="/cuisines/:id" exact component={Recipe}  />
+        <Route path="/cuisines" exact render={() => this.state.cuisineInfo} />
+        <Route path="/cuisines/:id" exact component={Recipes} />
       </div>
     );
   }
