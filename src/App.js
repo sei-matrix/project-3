@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 import Recipes from "./components/recipes/Recipes";
 import Details from "./components/details/Details";
+import Nav from './components/navbar/Navbar'
 import "./App.css";
 
 class App extends Component {
@@ -49,8 +50,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Route path="/" component={Nav} />
         <Route path="/" exact render={() => this.state.cuisineInfo} />
-        <Route path="/cuisines" exact render={() => this.state.cuisineInfo} />
         <Route path="/cuisines/:id" exact component={Recipes} />
       </div>
     );
