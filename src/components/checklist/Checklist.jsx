@@ -12,7 +12,7 @@ class Checklist extends Component {
           
         <span className="checklistitem">
         <input type="checkbox" onChange={this.handleChange}/>
-        {this.props.name}
+        {" "+this.props.name}
         </span>  
          );
     }
