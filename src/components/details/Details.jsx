@@ -28,23 +28,27 @@ class Details extends Component {
   state = {
     ingredients: [],
     recipeId: this.props.match.params.id,
-    text: ""
+    text: "",
+    title: "",
+    instructions: ""
 
   }
 
 
   componentDidMount() {
-    axios.get(`https://api.spoonacular.com/recipes/${this.props.match.params.id}/ingredientWidget.json?apiKey=01773742fd534e77967f3c3e59b214e6`)
+    axios.get(`https://api.spoonacular.com/recipes/${this.props.match.params.id}/information?apiKey=01773742fd534e77967f3c3e59b214e6`)
       .then(res => {
-        const ingredients = res.data.ingredients;
+        const ingredients = res.data.extendedIngredients;
         let text = ""
+        let title = res.data.title
+        let instructions = res.data.instructions
         for (let index = 0; index < ingredients.length; index++) {
           const element = ingredients[index].name ;
           text += element + " * "
           
         }
     
-        this.setState({ ingredients, text });
+        this.setState({ ingredients, text, title, instructions });
 
       })
       
@@ -64,11 +68,10 @@ class Details extends Component {
             src={`https://spoonacular.com/recipeImages/${this.state.recipeId}-636x393.jpg`}
             />
           <Card.Body>
-            <Card.Title>{this.props.location.name.title}</Card.Title>
-            {/* <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text> */}
+            <Card.Title>{this.state.title}</Card.Title>
+            <Card.Text>
+              {this.state.instructions}
+            </Card.Text>
           </Card.Body>
           <h3>Ingredients</h3>
           <ListGroup className="list-group-flush">
