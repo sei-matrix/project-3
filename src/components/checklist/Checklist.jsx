@@ -10,7 +10,7 @@ class Checklist extends Component {
      
         return ( 
           
-             <span>
+        <span className="checklistitem">
         <input type="checkbox" onChange={this.handleChange}/>
         {this.props.name}
         </span>  

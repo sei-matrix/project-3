@@ -94,3 +94,7 @@ img {
   color: #fefefe;
   text-shadow: 1px 1px 2px #0a0a0a;
 }
+
+.checklistitem{
+  text-align: left;
+}
