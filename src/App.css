@@ -38,63 +38,59 @@
   }
 }
 
-
-
 body {
-  text-align: center
-  }
-  
-  img {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .card {
-    box-sizing: border-box;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 1px 1px 1px black;
-    width: calc(100%/4);
-    float: left;
-  }
-  
-  .clear{
-    clear: both;
-  }
-  
-  
-  @media (max-width:900px){
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.card {
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 1px 1px 1px black;
+  width: calc(100% / 4);
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+@media (max-width: 900px) {
   .card {
     padding: 3px;
   }
-  }
-  
-  @media (max-width:850px){
-    img {
+}
+
+@media (max-width: 850px) {
+  img {
     width: 100px;
     height: 100px;
   }
-  }
+}
 
-  .hero-section {
-    background: url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80") 50% no-repeat;
-    background-size: cover;
-    height: 60vh;
-    text-align: center;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-justify-content: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  
-  .hero-section .hero-section-text {
-    color: #fefefe;
-    text-shadow: 1px 1px 2px #0a0a0a;
-  }
-  
-  
+.hero-section {
+  background: url("https://images.unsplash.com/photo-1505976311692-e64b8bbd6cfa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80")
+    50% no-repeat;
+  background-size: cover;
+  height: 60vh;
+  text-align: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.hero-section .hero-section-text {
+  color: #fefefe;
+  text-shadow: 1px 1px 2px #0a0a0a;
+}

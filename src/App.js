@@ -28,7 +28,7 @@ class App extends Component {
     let cuisineInfoCpy = [...this.state.cuisineInfo];
     this.state.cuisineName.forEach((c, index) => {
       cuisine = c;
-      let url = `https://api.spoonacular.com/recipes/search?apiKey=01773742fd534e77967f3c3e59b214e6&cuisine=${cuisine}&offset=${this.state.offsets[index]}&number=1`;
+      let url = `https://api.spoonacular.com/recipes/search?apiKey=a9ee5036a83347bda7a87a9daa1889d8&cuisine=${cuisine}&offset=${this.state.offsets[index]}&number=1`;
       axios
         .get(url)
         .then(obj => {
