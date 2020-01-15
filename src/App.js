@@ -52,7 +52,7 @@ class App extends Component {
         <Route path="/" component={Header} />
         <Route path="/" exact render={() => this.state.cuisineInfo} />
         <Route path="/cuisines/:id" exact component={Recipes} />
-        <Route path="/recipe/:id" exact component={Details} />
+        <Route path="/recipes/:id" exact component={Details} />
       </div>
     );
   }

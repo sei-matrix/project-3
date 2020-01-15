@@ -17,10 +17,7 @@ class Recipe extends Component {
       <div>
       
           {/* <Link to={`/recipe/${recipeId}`}> */}
-          <Link to={{ 
-        pathname: `/recipe/${recipeId}`,
-        name: {title: recipeName}
-    }}>
+          <Link to={`/recipes/${recipeId}`}>
           <Card style={{ width: "18rem" }}>
             <Card.Img
               variant="top"

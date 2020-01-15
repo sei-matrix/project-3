@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import Checklist from '../checklist/Checklist'
 
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -24,11 +25,22 @@ const to = "966506030008";
 class Details extends Component {
   state = {
     ingredients: [],
+    available: [],
     recipeId: this.props.match.params.id,
     text: "",
     title: "",
-    instructions: ""
+    instructions: "",
   };
+
+  boxChecked = (name)=>{
+    let text = this.state.text
+    let availability = [...this.state.available]
+    let ingredientIndex = this.state.ingredients.find(ingredient=> ingredient==name)
+    availability[ingredientIndex] = !availability[ingredientIndex]
+    text += name + "\n";
+    this.setState({available: availability, text})
+  }
+
 
   componentDidMount() {
     axios
@@ -37,15 +49,15 @@ class Details extends Component {
       )
       .then(res => {
         const ingredients = res.data.extendedIngredients;
-        let text = "";
         let title = res.data.title;
         let instructions = res.data.instructions;
+        let available = []
         for (let index = 0; index < ingredients.length; index++) {
           const element = ingredients[index].name;
-          text += element + " * ";
+          available.push(false)
         }
 
-        this.setState({ ingredients, text, title, instructions });
+        this.setState({ ingredients, title, instructions });
       });
   }
 
@@ -67,16 +79,7 @@ class Details extends Component {
             {this.state.ingredients.map(
               ingredient => (
                 // <ListGroupItem>
-                <InputGroup className="mb-3">
-                  <InputGroup.Prepend>
-                    <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                  </InputGroup.Prepend>
-                  {/* <InputGroup.Text id="basic-addon1">{ingredient.name}</InputGroup.Text> */}
-                  <FormControl
-                    aria-label="Text input with checkbox"
-                    value={ingredient.name}
-                  />
-                </InputGroup>
+                <Checklist chosen={this.boxChecked} name={ingredient.name} />
               )
               // </ListGroupItem>
             )}
