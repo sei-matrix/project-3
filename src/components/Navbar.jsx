@@ -11,7 +11,7 @@ class NavBar extends Component {
     return (
       <React.Fragment>
        <Navbar bg="light" expand="lg">
-  <Navbar.Brand href="/">flavor</Navbar.Brand>
+  <Navbar.Brand >flavor</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
