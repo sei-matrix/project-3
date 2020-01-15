@@ -14,11 +14,11 @@ const Nexmo = require("nexmo");
 
 const nexmo = new Nexmo({
   apiKey: "026ac304",
-  apiSecret: "ZwfvSATYPhlLtlZ1"
+  apiSecret: "ZwfvSATYPhlLtlZ1",
 });
 
 const from = "Nexmo";
-const to = "966506030008";
+// const to = "966506030008";
 
 //nexmo.message.sendSms(from, to, text);
 
@@ -45,7 +45,7 @@ class Details extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/${this.props.match.params.id}/information?apiKey=a9ee5036a83347bda7a87a9daa1889d8`
+        `https://api.spoonacular.com/recipes/${this.props.match.params.id}/information?apiKey=06597fc832594e629139cfc88e709de4`
       )
       .then(res => {
         const ingredients = res.data.extendedIngredients;
@@ -84,15 +84,27 @@ class Details extends Component {
               // </ListGroupItem>
             )}
           </ListGroup>
-          <Card.Body>
+          <Card.Footer>
+          <InputGroup className="mb-3">
+    <InputGroup.Prepend>
+      <InputGroup.Text id="basic-addon1">+966</InputGroup.Text>
+    </InputGroup.Prepend>
+    <FormControl
+      onChange ={this.handleChange}
+      placeholder="Mobile Number"
+      aria-label="mobile"
+      aria-describedby="basic-addon1"
+    />
+  </InputGroup>
             <Card.Link
               href="#"
-              onClick={() => nexmo.message.sendSms(from, to, this.state.text)}
+              onClick={() => nexmo.message.sendSms(from, '966' + this.state.mobile, this.state.text)}
             >
               Send SMS
             </Card.Link>
-          </Card.Body>
+          </Card.Footer>
         </Card>
+
       </div>
     );
   }
