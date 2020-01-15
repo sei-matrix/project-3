@@ -45,7 +45,7 @@ class Details extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/${this.props.match.params.id}/information?apiKey=06597fc832594e629139cfc88e709de4`
+        `https://api.spoonacular.com/recipes/${this.props.match.params.id}/information?apiKey=08df91330e654056a7a82f23569dec0a`
       )
       .then(res => {
         const ingredients = res.data.extendedIngredients;

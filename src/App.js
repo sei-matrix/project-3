@@ -33,7 +33,7 @@ class App extends Component {
 
     this.state.cuisineName.forEach((c, index) => {
       cuisine = c;
-      let url = `https://api.spoonacular.com/recipes/search?apiKey=06597fc832594e629139cfc88e709de4&cuisine=${cuisine}&offset=${this.state.offsets[index]}&number=1`;
+      let url = `https://api.spoonacular.com/recipes/search?apiKey=08df91330e654056a7a82f23569dec0a&cuisine=${cuisine}&offset=${this.state.offsets[index]}&number=1`;
       axios
         .get(url)
         .then(obj => {
