@@ -6,6 +6,7 @@ class Cuisine extends Component {
     }
     render() { 
         return ( 
+            
             <Link to={`/cuisines/${this.props.name}`}>
                 <div className='cuisine'>
                  <h1> {this.props.name}</h1>
