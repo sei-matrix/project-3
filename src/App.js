@@ -4,10 +4,12 @@ import { Route } from "react-router-dom";
 import axios from "axios";
 import Recipes from "./components/recipes/Recipes";
 import Details from "./components/details/Details";
-import Nav from './components/Navbar'
-import Header from './components/recipe/Header'
-import "./App.css";
+import Nav from "./components/Navbar";
+import Header from "./components/recipe/Header";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -17,18 +19,21 @@ class App extends Component {
       "Thai",
       "French",
       "Italian",
-      "Chinese"
+      "Chinese",
+      "Greek",
+      "American"
     ],
-    offsets: [5, 0, 0, 5, 0, 5],
+    offsets: [5, 0, 0, 5, 0, 5, 0, 4],
     cuisineInfo: []
   };
 
   componentDidMount() {
     let cuisine = "";
     let cuisineInfoCpy = [...this.state.cuisineInfo];
+
     this.state.cuisineName.forEach((c, index) => {
       cuisine = c;
-      let url = `https://api.spoonacular.com/recipes/search?apiKey=a9ee5036a83347bda7a87a9daa1889d8&cuisine=${cuisine}&offset=${this.state.offsets[index]}&number=1`;
+      let url = `https://api.spoonacular.com/recipes/search?apiKey=06597fc832594e629139cfc88e709de4&cuisine=${cuisine}&offset=${this.state.offsets[index]}&number=1`;
       axios
         .get(url)
         .then(obj => {
@@ -48,9 +53,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         <Route path="/" component={Nav} />
+        <Route path="/" component={Nav} />
         <Route path="/" component={Header} />
-        <Route path="/" exact render={() => this.state.cuisineInfo} />
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <Container>
+              <Row>{this.state.cuisineInfo}</Row>
+            </Container>
+          )}
+        />
         <Route path="/cuisines/:id" exact component={Recipes} />
         <Route path="/recipes/:id" exact component={Details} />
       </div>

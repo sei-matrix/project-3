@@ -11,7 +11,7 @@ class Recipes extends Component {
 
     componentDidMount() {
         let recipesCpy = []
-        let url = `https://api.spoonacular.com/recipes/search?apiKey=a9ee5036a83347bda7a87a9daa1889d8&cuisine=${this.props.match.params.id}&offset=${Math.floor(Math.random()*50)}&number=12`;
+        let url = `https://api.spoonacular.com/recipes/search?apiKey=06597fc832594e629139cfc88e709de4&cuisine=${this.props.match.params.id}&offset=${Math.floor(Math.random()*50)}&number=12`;
         axios.get(url).then(res=>{
         recipesCpy = res.data.results.map(
             recipe=>
